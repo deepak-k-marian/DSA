@@ -9,6 +9,7 @@ Data Structure is the way of organizing the data, such that the data can be stor
 - String
 - Character
 - Boolean
+
 **Non-Primitive Data Structure (ADT - Abstract Data Type)**
 - **Linear Data Structure**
   - Arrays

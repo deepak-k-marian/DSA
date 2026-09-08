@@ -1,4 +1,5 @@
 '''
+Question:
 Given n employee IDs determine wether all IDs are unique;
 print YES if every ID occurs once else NO.
 
