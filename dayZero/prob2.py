@@ -1,5 +1,5 @@
 '''
-Problem 2:
+Question:
 Find the first greatest and second greatest numbers in a list of numbers.
 
 Condition:
