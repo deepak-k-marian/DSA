@@ -21,7 +21,7 @@ Second greatest: 29 | index = 2
 Note: the index is 1 based
 '''
 
-def find_greatest_numbers(numbers: List[int]) -> str:
+def findGreatestNumbers(numbers: List[int]) -> str:
 
     firstGreatest = secondGreatest = -1
     # Changed initial index tracking values to -1 to represent "not found" cleanly
@@ -40,4 +40,4 @@ def find_greatest_numbers(numbers: List[int]) -> str:
     # Perform the 1-based index conversion strictly at the end when printing
     return f"First greatest: {firstGreatest} | index = {firstIndex + 1} \nSecond greatest: {secondGreatest} | index = {secondIndex + 1}"
 
-print(find_greatest_numbers([10, 29, 9, 47, 26]))
+print(findGreatestNumbers([10, 29, 9, 47, 26]))
