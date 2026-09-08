@@ -1,3 +1,5 @@
+# About the Repo
+
 This is a repo I made for journaling and practicing the daily task I do in my DSA sessions.
 This would have:
 - Notes
