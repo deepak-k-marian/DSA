@@ -1,31 +1,83 @@
-**Data** - raw (unprocessed) eg: text, numbers, images, image, audio, video, doc, tables, figures
+# Data Structures
 
-**Data Structure**
-Data Structure is the way of organizing the data, such that the data can be stored, accessed, manipulated, maintained in an easy and efficient manner
-### Data Structure system
-**Primitive Data Structure (Built In)**
-- Integer
-- Float
-- String
-- Character
-- Boolean
+> **Related problems:** [Day 0](/problems/dayZero)
 
-**Non-Primitive Data Structure (ADT - Abstract Data Type)**
-- **Linear Data Structure**
-  - Arrays
-  - Linked list
-  - Stack
-  - Queue
-- **Non-Linear Data Structure**
-  - Trees
-  - Graphs
+## Data
 
-**ADT - Abstract Data Type**
-Defines how the data structure is organized and its operational details on the data structure without any implementation details
+Data is raw, unprocessed information, such as text, numbers, images, audio, video, documents, tables, and figures.
+
+## Data Structure
+
+A data structure is a way of organizing data so that it can be stored, accessed, manipulated, and maintained efficiently.
+
+### Bit and Byte
+- **Bit**: The smallest unit of data in a computer, which can have a value of either 0 or 1.
+- **Byte**: A group of 8 bits that can represent a character or a small number.
+
+> 1 byte = 8 bits = $2^3$ bits
+
+### Number Systems
+
+- **Binary Number System**: Base 2, uses digits 0 and 1
+- **Octal Number System**: Base 8, uses digits 0-7
+- **Decimal Number System**: Base 10, uses digits 0-9
+- **Hexadecimal Number System**: Base 16, uses digits 0-9 and letters A-F
+
+Memory addresses in a system are commonly represented using the hexadecimal number system.
+
+> 1 KB = 1024 bytes = $2^{10}$ bytes
+
+![Analog and Digital](../assets/images/analogDigital.png)
+
+## Data Structure System
+
+The structure (or format) used to store and access data in a system is called a data structure.
+
+An algorithm is a procedure used to process, manipulate, store, or access data.
+
+
+## Forms of Representation of Data Structures
+- Pseudocode
+- Flowcharts
+- Algorithm documentation
+- Code
+
+## Primitive Data Structures (Built-In)
+### Simple or Basic Built-Ins
+  - Integer
+  - Float
+  - String
+  - Boolean
+### Collection or Container Built-Ins
+  - List
+  - Tuple
+  - Set
+  - Dictionary
+
+## Non-Primitive Data Structures (ADTs)
+
+### Linear Data Structures
+
+- Arrays
+- Linked lists
+- Stacks
+- Queues
+
+### Non-Linear Data Structures
+
+- Trees
+- Graphs
+
+## Abstract Data Type (ADT)
+
+An abstract data type defines how a data structure is organized and the operations it supports without specifying implementation details.
  
-**Linear Data Structure**
-Elements are arranged in a sequential order one after the other; It can be traversed in one direction alone at a time, either forward or backward (aka either from start or end)
-**Note :** In some cases random access also possible
+## Linear Data Structure
+
+Elements are arranged in sequential order, one after another. They can be traversed in one direction at a time, either forward or backward.
+
+> **Note:** Random access is also possible in some linear data structures.
  
-**Non-Linear Data Structure**
-Elements are arranged in non sequential order with branches; Elements can be traversed breath (Horizontal) wise or depth (Vertical) wise.
+## Non-Linear Data Structure
+
+Elements are arranged in a non-sequential order with branches. They can be traversed breadth-first (horizontally) or depth-first (vertically).

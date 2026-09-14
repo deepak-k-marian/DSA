@@ -1,33 +1,3 @@
-'''
-Queston:
-In an array of elements, find the average of odd elements and average of even elements.
-
-Constrains:
-- No. of Iterations obtained in runtime
-- Array of elements
-- Size of array not listed
-- Round off the value to two decimal places 
-
-I/P:
-3
-10 2 19 27 16
-3 9 5 15
-12 46 20 14 26
-
-O/P:
-T1
-Even Average: 9.33
-Odd Average: 16.33
-
-T2
-Eve Avg: 0.00
-Odd Avg: 8
-
-T3
-Eve Avg: 23.60
-Odd Avg: 0.00
-'''
-
 def avgOfOddAndEven():
     noOfArray = int(input("Enter no. of arrays / test cases : "))
     print("")
