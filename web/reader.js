@@ -96,7 +96,17 @@ function renderMarkdown(markdown, sourceFile) {
 if (!file) {
   content.innerHTML = '<div class="error-state">No note was selected. <a href="index.html#notes">Return to the journal.</a></div>';
 } else {
-  fetch(new URL(file, window.location.href)).then((response) => { if (!response.ok) throw new Error('Note unavailable'); return response.text(); }).then((markdown) => {
-    try { renderMarkdown(markdown, file); } catch (error) { console.error('Could not render note', error); throw error; }
-  }).catch(() => { content.innerHTML = '<div class="error-state">This note could not be opened. <a href="index.html#notes">Return to the journal.</a></div>'; });
+  const targetFile = file.replace(/^(\.\.\/)+/, './');
+  const fetchNote = (filePath) => fetch(new URL(filePath, window.location.href)).then((response) => {
+    if (!response.ok) throw new Error('Note unavailable');
+    return response.text();
+  });
+
+  fetchNote(targetFile)
+    .catch(() => fetchNote(file))
+    .catch(() => fetchNote(`../${targetFile.replace(/^\.\//, '')}`))
+    .then((markdown) => {
+      try { renderMarkdown(markdown, targetFile); } catch (error) { console.error('Could not render note', error); throw error; }
+    })
+    .catch(() => { content.innerHTML = '<div class="error-state">This note could not be opened. <a href="index.html#notes">Return to the journal.</a></div>'; });
 }

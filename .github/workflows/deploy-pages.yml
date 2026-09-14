@@ -24,10 +24,17 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Build site directory
+        run: |
+          mkdir -p _site
+          cp -r web/* _site/
+          cp -r notes _site/
+          cp -r assets _site/
+          cp -r problems _site/ 2>/dev/null || true
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./web
+          path: ./_site
 
   deploy:
     needs: build
