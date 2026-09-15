@@ -29,9 +29,29 @@ This would have:
 
 ### Question
 - [**Question 1**](/problems/questions/q1.md)
+- [**Question 2**](/problems/questions/q2.md)
+- [**Question 3**](/problems/questions/q3.md)
+- [**Question 4**](/problems/questions/q4.md)
+- [**Question 5**](/problems/questions/q5.md)
+- [**Question 6**](/problems/questions/q6.md)
+- [**Question 7**](/problems/questions/q7.md)
+- [**Question 8**](/problems/questions/q8.md)
+- [**Question 9**](/problems/questions/q9.md)
+- [**Question 10**](/problems/questions/q10.md)
+- [**Question 11**](/problems/questions/q11.md)
 
 ### Solution in Python
 - [**Solution 1**](/problems/solutions/q1.py)
+- [**Solution 2**](/problems/solutions/q2.py)
+- [**Solution 3**](/problems/solutions/q3.py)
+- [**Solution 4**](/problems/solutions/q4.py)
+- [**Solution 5**](/problems/solutions/q5.py)
+- [**Solution 6**](/problems/solutions/q6.py)
+- [**Solution 7**](/problems/solutions/q7.py)
+- [**Solution 8**](/problems/solutions/q8.py)
+- [**Solution 9**](/problems/solutions/q9.py)
+- [**Solution 10**](/problems/solutions/q10.py)
+- [**Solution 11**](/problems/solutions/q11.py)
 
 ## Practice Guidelines
 
