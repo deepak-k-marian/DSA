@@ -24,6 +24,8 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Build index.html
+        run: python3 web/build.py
       - name: Build site directory
         run: |
           mkdir -p _site

@@ -1,0 +1,58 @@
+[
+  {
+    "file": "data-structure.md",
+    "title": "Data structures",
+    "description": "From bits and bytes to linear and non-linear structures.",
+    "icon": "[ ]",
+    "time": "8 min read"
+  },
+  {
+    "file": "time-and-space-complexity.md",
+    "title": "Time & space",
+    "description": "Read Big O as a story about growth, not a decoration.",
+    "icon": "bars",
+    "time": "10 min read"
+  },
+  {
+    "file": "hashing-and-complexity-fundamentals.md",
+    "title": "Hashing & complexity",
+    "description": "Hash maps, hash sets, and when O(1) lookup changes everything.",
+    "icon": "#{ }",
+    "time": "9 min read"
+  },
+  {
+    "file": "frequency-minmax-and-duplicate-search.md",
+    "title": "Frequency & tracking",
+    "description": "Count occurrences, chase duplicates, and track running min/max.",
+    "icon": "↑↓",
+    "time": "10 min read"
+  },
+  {
+    "file": "two-pointers-technique.md",
+    "title": "Two pointers",
+    "description": "Opposite ends, same direction, Floyd's cycle — one pattern, many shapes.",
+    "icon": "← →",
+    "time": "11 min read"
+  },
+  {
+    "file": "fixed-sliding-window-and-substrings.md",
+    "title": "Sliding window",
+    "description": "Fixed and variable windows for subarray and substring problems.",
+    "icon": "[___]",
+    "time": "12 min read"
+  },
+  {
+    "file": "math-libraries-and-code-templates.md",
+    "title": "Math & libraries",
+    "description": "Built-ins, heaps, bisect, and reusable templates for every pattern.",
+    "icon": "∑ƒ",
+    "time": "13 min read"
+  },
+  {
+    "file": "user-input-parsing-and-string-processing.md",
+    "title": "Input & strings",
+    "description": "Parse, format, and process input — from single values to grids.",
+    "icon": "\"_\"",
+    "time": "10 min read"
+  }
+]
