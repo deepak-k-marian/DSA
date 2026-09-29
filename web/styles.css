@@ -59,6 +59,9 @@ h1 em { color: var(--coral); font-family: Georgia, serif; font-weight: 400; lett
 .note-card h3 { margin-bottom: 9px; font-size: 22px; letter-spacing: -0.04em; }
 .note-card p { max-width: 270px; margin-bottom: 28px; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .note-card-dark p { color: #b9c2bd; }.card-bottom { margin-top: auto; color: var(--muted); }.note-card-dark .card-bottom { color: var(--mint); }.arrow { font-size: 20px; }
+/* coral accent: bottom arrow on every card, ↗ top-right on light cards */
+.note-card .arrow { color: var(--coral); }
+.note-card-light .card-top span:last-child { color: var(--coral); }
 .practice-section { padding-bottom: 88px; }
 .problem-meta { gap: 8px; margin-bottom: 4px; color: var(--muted); font: 11px "DM Mono", monospace; }.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }.meta-divider { margin: 0 5px; color: var(--line); }
 .practice-layout { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; }
@@ -92,6 +95,12 @@ h1 em { color: var(--coral); font-family: Georgia, serif; font-weight: 400; lett
 .markdown-content code { padding: 3px 6px; color: var(--mint-deep); background: var(--mint); font: 12px "DM Mono", monospace; }
 .markdown-content pre { overflow-x: auto; margin: 28px 0; padding: 22px; color: #dce9e1; background: var(--ink); box-shadow: var(--shadow); }
 .markdown-content pre code { padding: 0; color: inherit; background: transparent; font-size: 12px; line-height: 1.7; }
+.tok-keyword  { color: #e9785b; }                        /* coral  — def, for, if, return … */
+.tok-string   { color: #8ecfb0; }                        /* mint   — "…" '…' */
+.tok-comment  { color: #556860; font-style: italic; }    /* dim    — # … */
+.tok-number   { color: #d4a96a; }                        /* amber  — 0 1 3.14 */
+.tok-builtin  { color: #7eb8d4; }                        /* sky    — print len range … */
+.tok-deco     { color: #c8a9e0; }                        /* lilac  — @lru_cache */
 .diagram-card { margin: 28px 0; padding: 20px; background: var(--cream); border: 1px solid var(--line); }.diagram-label { margin-bottom: 16px; color: var(--mint-deep); font: 11px "DM Mono", monospace; letter-spacing: 0.12em; }.diagram-card .mermaid { overflow-x: auto; }.diagram-card svg { max-width: 100%; height: auto; }
 .markdown-content blockquote { margin: 27px 0; padding: 17px 22px; border-left: 4px solid var(--coral); color: var(--ink); background: var(--mint); font: 15px/1.7 Georgia, serif; }
 .markdown-content img { display: block; max-width: 100%; height: auto; margin: 28px 0; box-shadow: var(--shadow); }

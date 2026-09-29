@@ -6,6 +6,81 @@ const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
 }[character]));
 
+function syntaxHighlight(src, lang) {
+  const LANGS = ['python', 'py', 'text', ''];
+  if (!LANGS.includes(lang)) return escapeHtml(src);
+
+  const KEYWORDS = new Set([
+    'def','class','return','if','elif','else','for','while','in','not','and',
+    'or','import','from','as','with','try','except','finally','raise','pass',
+    'break','continue','lambda','yield','True','False','None','assert','del',
+    'global','nonlocal','is','self'
+  ]);
+  const BUILTINS = new Set([
+    'print','len','range','enumerate','zip','map','filter','sorted','sum',
+    'min','max','abs','int','float','str','list','dict','set','tuple','bool',
+    'type','isinstance','any','all','input','open','round','pow','divmod',
+    'ord','chr','hex','bin','format','repr','super','vars','iter','next',
+    'reversed','hash','id'
+  ]);
+
+  const tokens = [];
+  let i = 0;
+
+  while (i < src.length) {
+    // Decorator  @name
+    if (src[i] === '@') {
+      let j = i + 1;
+      while (j < src.length && /[\w.]/.test(src[j])) j++;
+      tokens.push({ t: 'deco', v: src.slice(i, j) }); i = j; continue;
+    }
+    // Comment  # ...
+    if (src[i] === '#') {
+      let j = src.indexOf('\n', i);
+      if (j === -1) j = src.length;
+      tokens.push({ t: 'comment', v: src.slice(i, j) }); i = j; continue;
+    }
+    // Triple-quoted string
+    const tq = src.slice(i, i + 3);
+    if (tq === '"""' || tq === "'''") {
+      let j = i + 3;
+      while (j < src.length && src.slice(j, j + 3) !== tq) j++;
+      j += 3;
+      tokens.push({ t: 'string', v: src.slice(i, j) }); i = j; continue;
+    }
+    // Single-quoted string
+    if (src[i] === '"' || src[i] === "'") {
+      const q = src[i]; let j = i + 1;
+      while (j < src.length && src[j] !== q && src[j] !== '\n') {
+        if (src[j] === '\\') j++; j++;
+      }
+      if (src[j] === q) j++;
+      tokens.push({ t: 'string', v: src.slice(i, j) }); i = j; continue;
+    }
+    // Number
+    if (/[0-9]/.test(src[i])) {
+      let j = i;
+      while (j < src.length && /[0-9._xXbBoO]/.test(src[j])) j++;
+      tokens.push({ t: 'number', v: src.slice(i, j) }); i = j; continue;
+    }
+    // Word / keyword / builtin
+    if (/[a-zA-Z_]/.test(src[i])) {
+      let j = i;
+      while (j < src.length && /[\w]/.test(src[j])) j++;
+      const word = src.slice(i, j);
+      const t = KEYWORDS.has(word) ? 'keyword' : BUILTINS.has(word) ? 'builtin' : 'id';
+      tokens.push({ t, v: word }); i = j; continue;
+    }
+    tokens.push({ t: 'other', v: src[i] }); i++;
+  }
+
+  return tokens.map(({ t, v }) => {
+    const e = escapeHtml(v);
+    if (t === 'other' || t === 'id') return e;
+    return `<span class="tok-${t}">${e}</span>`;
+  }).join('');
+}
+
 function inlineMarkdown(value) {
   let html = escapeHtml(value);
   html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
@@ -51,7 +126,7 @@ function renderMarkdown(markdown, sourceFile) {
       if (line.startsWith('```')) {
         const codeMarkup = code === 'mermaid'
           ? `<div class="diagram-card"><div class="diagram-label">CONCEPT MAP</div><div class="mermaid">${escapeHtml(codeLines.join('\n'))}</div></div>`
-          : `<pre><code class="language-${code}">${escapeHtml(codeLines.join('\n'))}</code></pre>`;
+          : `<pre><code class="language-${code}">${syntaxHighlight(codeLines.join('\n'), code)}</code></pre>`;
         output.push(codeMarkup);
         code = null;
         codeLines = [];
