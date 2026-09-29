@@ -81,6 +81,42 @@ function syntaxHighlight(src, lang) {
   }).join('');
 }
 
+// Convert the LaTeX subset used in these notes into HTML.
+// Input has already been HTML-escaped by escapeHtml(), so we only
+// inject safe HTML tags (sup/sub) and Unicode replacement strings.
+function renderMath(tex) {
+  let s = tex;
+  // --- Greek / symbols ---
+  s = s.replace(/\\Omega/g, '\u03A9');
+  s = s.replace(/\\Theta/g, '\u0398');
+  s = s.replace(/\\infty/g, '\u221E');
+  s = s.replace(/\\ldots|\\cdots/g, '\u2026');
+  s = s.replace(/\\cdot/g, '\u00B7');
+  s = s.replace(/\\lfloor/g, '\u230A');
+  s = s.replace(/\\rfloor/g, '\u230B');
+  s = s.replace(/\\lceil/g,  '\u2308');
+  s = s.replace(/\\rceil/g,  '\u2309');
+  s = s.replace(/\\times/g, '\u00D7');
+  s = s.replace(/\\geq/g, '\u2265');
+  s = s.replace(/\\leq/g, '\u2264');
+  s = s.replace(/\\neq/g, '\u2260');
+  s = s.replace(/\\approx/g, '\u2248');
+  s = s.replace(/\\pm/g, '\u00B1');
+  // --- Named functions (strip backslash, keep name) ---
+  s = s.replace(/\\(log|ln|sin|cos|tan|max|min|gcd|lcm|sum|prod|lim)/g, '$1');
+  // --- \frac{a}{b} -> a/b ---
+  s = s.replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1/$2');
+  // --- Braced super / subscripts ---
+  s = s.replace(/\^\{([^}]*)\}/g, (_, inner) => `<sup>${inner}</sup>`);
+  s = s.replace(/_\{([^}]*)\}/g,  (_, inner) => `<sub>${inner}</sub>`);
+  // --- Single-char super / subscripts ---
+  s = s.replace(/\^([a-zA-Z0-9])/g, (_, c) => `<sup>${c}</sup>`);
+  s = s.replace(/_([a-zA-Z0-9])/g,  (_, c) => `<sub>${c}</sub>`);
+  // --- Strip any remaining backslashes before letters ---
+  s = s.replace(/\\([a-zA-Z]+)/g, '$1');
+  return s;
+}
+
 function inlineMarkdown(value) {
   let html = escapeHtml(value);
   html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
@@ -88,7 +124,8 @@ function inlineMarkdown(value) {
   html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
   html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  html = html.replace(/\$([^$]+)\$/g, '<span class="math">$1</span>');
+  // Render LaTeX math wrapped in $...$
+  html = html.replace(/\$([^$]+)\$/g, (_, tex) => `<span class="math">${renderMath(tex)}</span>`);
   return html;
 }
 
@@ -136,6 +173,7 @@ function renderMarkdown(markdown, sourceFile) {
     if (line.startsWith('```')) { flushParagraph(); flushList(); flushQuote(); flushTable(); code = line.slice(3).trim() || 'text'; codeLines = []; return; }
     if (/^\s*\|/.test(line)) { flushParagraph(); flushList(); flushQuote(); table.push(line); return; }
     if (!line.trim()) { flushParagraph(); flushList(); flushQuote(); flushTable(); return; }
+    if (/^(-{3,}|\*{3,}|_{3,})$/.test(line.trim())) { flushParagraph(); flushList(); flushQuote(); flushTable(); return; }
     const heading = line.match(/^(#{1,3})\s+(.+)/);
     if (heading) { flushParagraph(); flushList(); flushQuote(); flushTable(); const level = heading[1].length; const id = `heading-${headings.length}`; headings.push({ id, text: heading[2] }); output.push(`<h${level} id="${id}">${inlineMarkdown(heading[2])}</h${level}>`); return; }
     if (/^>\s?/.test(line)) { flushParagraph(); flushList(); flushTable(); quote.push(line.replace(/^>\s?/, '')); return; }
