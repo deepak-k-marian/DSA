@@ -22,8 +22,8 @@ This would have:
 
 ## Notes
 
-- [**Data Structure**](notes/DataStructure.md)
-- [**Time and Space Complexity**](notes/TimeAndSpaceComplexity.md)
+- [**Data Structure**](notes/data-structure.md)
+- [**Time and Space Complexity**](notes/time-and-space-complexity.md)
 
 ## Coding Problem
 
@@ -39,6 +39,7 @@ This would have:
 - [**Question 9**](/problems/questions/q9.md)
 - [**Question 10**](/problems/questions/q10.md)
 - [**Question 11**](/problems/questions/q11.md)
+- [**Question 12**](/problems/questions/q12.md)
 
 ### Solution in Python
 - [**Solution 1**](/problems/solutions/q1.py)
@@ -52,6 +53,7 @@ This would have:
 - [**Solution 9**](/problems/solutions/q9.py)
 - [**Solution 10**](/problems/solutions/q10.py)
 - [**Solution 11**](/problems/solutions/q11.py)
+- [**Solution 12**](/problems/solutions/q12.py)
 
 ## Practice Guidelines
 

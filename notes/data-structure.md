@@ -1,6 +1,6 @@
 # Data Structures
 
-> **Related problems:** [Day 0](/problems/dayZero)
+> **Related problems:** [Day 0](/problems/day-zero)
 
 ## Data
 
@@ -27,7 +27,7 @@ Memory addresses in a system are commonly represented using the hexadecimal numb
 
 > 1 KB = 1024 bytes = $2^{10}$ bytes
 
-![Analog and Digital](../assets/images/analogDigital.png)
+![Analog and Digital](../assets/images/analog-digital.png)
 
 ## Data Structure System
 

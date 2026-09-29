@@ -52,7 +52,7 @@ From best to worst:
 6. **$O(2^n)$ — Exponential time:** The running time grows rapidly as the input size increases; this is common in brute-force algorithms.
 7. **$O(n!)$ — Factorial time:** The running time grows even more rapidly than exponential time; this is common in combinatorial problems.
 
-![Time Complexity](../assets/images/complexityCheatSheet.jpeg)
+![Time Complexity](../assets/images/complexity-cheat-sheet.jpeg)
 
 ## Space Complexity
 
@@ -62,5 +62,5 @@ From best to worst:
 
 > **Space complexity = Auxiliary space + Input space**
 
-![Big O Chart](../assets/images/bigOchart.jpeg)
+![Big O Chart](../assets/images/big-o-chart.jpeg)
 
