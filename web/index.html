@@ -19,8 +19,8 @@
         <span></span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
-        <a class="active" href="#overview">Overview</a>
-        <a href="#notes">Notes</a>
+        <a class="active" href="#overview" data-section="overview" aria-current="page">Overview</a>
+        <a href="#notes" data-section="notes">Notes</a>
       </nav>
     </header>
 
@@ -129,5 +129,31 @@
 
     <footer class="footer"><span>DSA JOURNAL / 2026</span><span>Created by <a href="https://github.com/deepak-k-marian" target="_blank" rel="noopener noreferrer">@deepak-k-marian</a>.</span></footer>
   </div>
+  <script>
+    const topbar = document.querySelector('.topbar');
+    const navigationLinks = [...document.querySelectorAll('.nav-links a[data-section]')];
+    const sections = navigationLinks
+      .map((link) => document.getElementById(link.dataset.section))
+      .filter(Boolean);
+
+    const setActiveSection = (sectionId) => {
+      navigationLinks.forEach((link) => {
+        const isActive = link.dataset.section === sectionId;
+        link.classList.toggle('active', isActive);
+        if (isActive) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visibleSection = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((first, second) => first.boundingClientRect.top - second.boundingClientRect.top)[0];
+      if (visibleSection) setActiveSection(visibleSection.target.id);
+    }, { rootMargin: '-104px 0px -62% 0px', threshold: 0 });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+    window.addEventListener('scroll', () => topbar.classList.toggle('is-scrolled', window.scrollY > 8), { passive: true });
+  </script>
 </body>
 </html>
