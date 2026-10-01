@@ -212,14 +212,14 @@ if (!file) {
   const targetFile = file.replace(/^(\.\.\/)+/, './');
   const fetchNote = (filePath) => fetch(new URL(filePath, window.location.href)).then((response) => {
     if (!response.ok) throw new Error('Note unavailable');
-    return response.text();
+    return response.text().then((markdown) => ({ markdown, sourceUrl: response.url }));
   });
 
   fetchNote(targetFile)
     .catch(() => fetchNote(file))
     .catch(() => fetchNote(`../${targetFile.replace(/^\.\//, '')}`))
-    .then((markdown) => {
-      try { renderMarkdown(markdown, `../${targetFile.replace(/^\.\//, '')}`); } catch (error) { console.error('Could not render note', error); throw error; }
+    .then(({ markdown, sourceUrl }) => {
+      try { renderMarkdown(markdown, sourceUrl); } catch (error) { console.error('Could not render note', error); throw error; }
     })
     .catch(() => { content.innerHTML = '<div class="error-state">This note could not be opened. <a href="index.html#notes">Return to the journal.</a></div>'; });
 }
