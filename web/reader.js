@@ -219,7 +219,7 @@ if (!file) {
     .catch(() => fetchNote(file))
     .catch(() => fetchNote(`../${targetFile.replace(/^\.\//, '')}`))
     .then((markdown) => {
-      try { renderMarkdown(markdown, targetFile); } catch (error) { console.error('Could not render note', error); throw error; }
+      try { renderMarkdown(markdown, `../${targetFile.replace(/^\.\//, '')}`); } catch (error) { console.error('Could not render note', error); throw error; }
     })
     .catch(() => { content.innerHTML = '<div class="error-state">This note could not be opened. <a href="index.html#notes">Return to the journal.</a></div>'; });
 }
