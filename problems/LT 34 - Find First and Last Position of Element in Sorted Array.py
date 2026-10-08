@@ -1,6 +1,33 @@
+'''
+Question:
+First and Last Occurrence
+Given an array and a target value X, find the first and last position where X occurs.
+Positions are 0-based.
+If the target does not occur, print -1 -1.
+
+Input Format
+N X
+A1 A2 ... AN
+
+Output Format
+first_position last_position
+
+Constraints
+1 ≤ N ≤ 1000
+-10^5 ≤ Ai, X ≤ 10^5
+
+Sample Test Cases
+TC   Input            Output
+1    6 5
+     2 5 3 5 7 5      1 5
+2    5 10
+     10 20 30 40 50   0 0
+3    5 10
+     20 30 40 50 60  -1 -1
+'''
+
 def firstAndLastOccur():
     arrSize, targetEle = map(int, input().split())
-    # Removed the redundant 'arr = [0] * arrSize' line as list() overwrites it anyway
     arr = list(map(int, input().split()))
 
     if arrSize == 0:
@@ -16,22 +43,20 @@ def firstAndLastOccur():
         return "Invalid Input - Array Size Mismatch"
 
     p1 = 0
-    p2 = len(arr) - 1  # Adjusted to point to the last valid index
+    p2 = len(arr) - 1
     p1TarPos = p2TarPos = -1
 
-    # Using a while loop to move your pointers inward step-by-step
     while p1 <= p2:
         if arr[p1] == targetEle:
             p1TarPos = p1
         else:
-            p1 += 1  # Move p1 forward only if target isn't found yet
+            p1 += 1
 
         if arr[p2] == targetEle:
             p2TarPos = p2
         else:
-            p2 -= 1  # Move p2 backward only if target isn't found yet
+            p2 -= 1
 
-        # If both pointers have locked onto their targets, we can stop early
         if p1TarPos != -1 and p2TarPos != -1:
             break
 
@@ -39,7 +64,6 @@ def firstAndLastOccur():
 
 
 print(firstAndLastOccur())
-
 
 '''
 Also this is valid for smaller ones:

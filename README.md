@@ -10,14 +10,13 @@ This would have:
 ## Repository Structure
 
 - `notes/` contains topic-based notes and explanations.
-- `problems/questions/` contains the problem statements.
-- `problems/solutions/` contains Python implementations for the problems.
+- `problems/` contains combined Python files with the problem statement as a docstring comment followed by the solution code.
 
 ## How to Use This Repository
 
 1. Read the relevant topic in the **Notes** section.
-2. Open a question and try to solve it independently.
-3. Compare your approach with the linked Python solution.
+2. Open a problem in `problems/` to read the question in comments and try to solve it independently.
+3. Compare your approach with the Python implementation below the question comment.
 4. Review the time and space complexity of the solution.
 
 ## Notes
@@ -25,35 +24,21 @@ This would have:
 - [**Data Structure**](notes/data-structure.md)
 - [**Time and Space Complexity**](notes/time-and-space-complexity.md)
 
-## Coding Problem
+## Coding Problems
 
-### Question
-- [**Question 1**](/problems/questions/q1.md)
-- [**Question 2**](/problems/questions/q2.md)
-- [**Question 3**](/problems/questions/q3.md)
-- [**Question 4**](/problems/questions/q4.md)
-- [**Question 5**](/problems/questions/q5.md)
-- [**Question 6**](/problems/questions/q6.md)
-- [**Question 7**](/problems/questions/q7.md)
-- [**Question 8**](/problems/questions/q8.md)
-- [**Question 9**](/problems/questions/q9.md)
-- [**Question 10**](/problems/questions/q10.md)
-- [**Question 11**](/problems/questions/q11.md)
-- [**Question 12**](/problems/questions/q12.md)
-
-### Solution in Python
-- [**Solution 1**](/problems/solutions/q1.py)
-- [**Solution 2**](/problems/solutions/q2.py)
-- [**Solution 3**](/problems/solutions/q3.py)
-- [**Solution 4**](/problems/solutions/q4.py)
-- [**Solution 5**](/problems/solutions/q5.py)
-- [**Solution 6**](/problems/solutions/q6.py)
-- [**Solution 7**](/problems/solutions/q7.py)
-- [**Solution 8**](/problems/solutions/q8.py)
-- [**Solution 9**](/problems/solutions/q9.py)
-- [**Solution 10**](/problems/solutions/q10.py)
-- [**Solution 11**](/problems/solutions/q11.py)
-- [**Solution 12**](/problems/solutions/q12.py)
+- [**Q1 - Average of Odd and Even Elements**](problems/Q1%20-%20Average%20of%20Odd%20and%20Even%20Elements.py)
+- [**Q2 - First and Second Greatest Numbers**](problems/Q2%20-%20First%20and%20Second%20Greatest%20Numbers.py)
+- [**Q3 - Attendance Marker**](problems/Q3%20-%20Attendance%20Marker.py)
+- [**LT 217 - Contains Duplicate**](problems/LT%20217%20-%20Contains%20Duplicate.py)
+- [**Q5 - Exam Scores Analysis**](problems/Q5%20-%20Exam%20Scores%20Analysis.py)
+- [**Q6 - Placement Cutoff Count**](problems/Q6%20-%20Placement%20Cutoff%20Count.py)
+- [**LT 34 - Find First and Last Position of Element in Sorted Array**](problems/LT%2034%20-%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array.py)
+- [**LT 344 - Reverse String**](problems/LT%20344%20-%20Reverse%20String.py)
+- [**Q9 - Print All Pairs**](problems/Q9%20-%20Print%20All%20Pairs.py)
+- [**LT 189 - Rotate Array**](problems/LT%20189%20-%20Rotate%20Array.py)
+- [**GFG - Rotate Array by Left**](problems/GFG%20-%20Rotate%20Array%20by%20Left.py)
+- [**GFG - Alternate positive and negative numbers**](problems/GFG%20-%20Alternate%20positive%20and%20negative%20numbers.py)
+- [**GFG - Reorder an Array According to Given Indexes**](problems/GFG%20-%20Reorder%20an%20Array%20According%20to%20Given%20Indexes.py)
 
 ## Practice Guidelines
 
