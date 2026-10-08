@@ -36,9 +36,13 @@ This would have:
 - [**LT 344 - Reverse String**](problems/LT%20344%20-%20Reverse%20String.py)
 - [**Q9 - Print All Pairs**](problems/Q9%20-%20Print%20All%20Pairs.py)
 - [**LT 189 - Rotate Array**](problems/LT%20189%20-%20Rotate%20Array.py)
-- [**GFG - Rotate Array by Left**](problems/GFG%20-%20Rotate%20Array%20by%20Left.py)
+- [**GFG - Reverse an Array**](problems/GFG%20-%20Reverse%20an%20Array.py)
+- [**GFG - Rotate Array**](problems/GFG%20-%20Rotate%20Array.py)
 - [**GFG - Alternate positive and negative numbers**](problems/GFG%20-%20Alternate%20positive%20and%20negative%20numbers.py)
 - [**GFG - Reorder an Array According to Given Indexes**](problems/GFG%20-%20Reorder%20an%20Array%20According%20to%20Given%20Indexes.py)
+- [**GFG - Rearrange Array Alternately**](problems/GFG%20-%20Rearrange%20Array%20Alternately.py)
+- [**GFG - Rearrange Array Such That arr[i] = i**](problems/GFG%20-%20Rearrange%20Array%20Such%20That%20arr%5Bi%5D%20%3D%20i.py)
+- [**GFG - Rearrange an Array with O(1) Extra Space**](problems/GFG%20-%20Rearrange%20an%20Array%20with%20O%281%29%20Extra%20Space.py)
 
 ## Practice Guidelines
 
