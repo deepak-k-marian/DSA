@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Topbar from '../components/Topbar';
 import { renderMarkdown, type Heading } from '../lib/markdown';
+import { renderMermaidDiagrams } from '../lib/mermaid';
 
 export default function Reader() {
   const [params] = useSearchParams();
@@ -34,13 +35,7 @@ export default function Reader() {
     if (!contentRef.current || !html) return;
     const images = contentRef.current.querySelectorAll('img');
     images.forEach((image) => { const source = image.getAttribute('src'); if (source && sourceUrl) image.src = new URL(source, sourceUrl).href; });
-    let cancelled = false;
-    import('mermaid').then(({ default: mermaid }) => {
-      if (cancelled) return;
-      mermaid.initialize({ startOnLoad: false, theme: 'base', themeVariables: { primaryColor: '#c8e9d8', primaryTextColor: '#1c2525', primaryBorderColor: '#2d6c58', lineColor: '#e9785b', secondaryColor: '#fbfaf6', tertiaryColor: '#f4f1ea' } });
-      return mermaid.run({ querySelector: '.mermaid' });
-    }).catch((loadError) => console.error('Could not render Mermaid diagram', loadError));
-    return () => { cancelled = true; };
+    renderMermaidDiagrams(contentRef.current).catch((loadError) => console.error('Could not render Mermaid diagram', loadError));
   }, [html, sourceUrl]);
 
   useEffect(() => {

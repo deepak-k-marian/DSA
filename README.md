@@ -10,6 +10,7 @@ This would have:
 ## Repository Structure
 
 - `client/` contains the React, TypeScript, and Tailwind frontend built with Vite.
+- `client/src/lib/mermaid.ts` contains the lazy Mermaid loader and renderer used by the Reader page.
 - `notes/` contains topic-based notes and explanations.
 - `problems/` contains combined Python files with the problem statement as a docstring comment followed by the solution code.
 
