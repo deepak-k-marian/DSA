@@ -8,6 +8,7 @@ export default function Reader() {
   const [params] = useSearchParams();
   const [html, setHtml] = useState('');
   const [headings, setHeadings] = useState<Heading[]>([]);
+  const [sourceUrl, setSourceUrl] = useState<string | null>(null);
   const [error, setError] = useState(false);
   const contentRef = useRef<HTMLElement>(null);
   const file = params.get('file');
@@ -22,7 +23,7 @@ export default function Reader() {
           const response = await fetch(new URL(candidate, window.location.href));
           if (!response.ok) continue;
           const result = renderMarkdown(await response.text());
-          setHtml(result.html); setHeadings(result.headings); document.title = `${result.headings.find((heading) => heading.text !== 'Question')?.text || 'DSA Note'} / DSA Journal`; return;
+          setHtml(result.html); setHeadings(result.headings); setSourceUrl(response.url); document.title = `${result.headings.find((heading) => heading.text !== 'Question')?.text || 'DSA Note'} / DSA Journal`; return;
         } catch { /* Try the next Pages-relative path. */ }
       }
       setError(true);
@@ -32,7 +33,7 @@ export default function Reader() {
   useEffect(() => {
     if (!contentRef.current || !html) return;
     const images = contentRef.current.querySelectorAll('img');
-    images.forEach((image) => { const source = image.getAttribute('src'); if (source) image.src = new URL(source, window.location.href).href; });
+    images.forEach((image) => { const source = image.getAttribute('src'); if (source && sourceUrl) image.src = new URL(source, sourceUrl).href; });
     let cancelled = false;
     import('mermaid').then(({ default: mermaid }) => {
       if (cancelled) return;
@@ -40,7 +41,7 @@ export default function Reader() {
       return mermaid.run({ querySelector: '.mermaid' });
     }).catch((loadError) => console.error('Could not render Mermaid diagram', loadError));
     return () => { cancelled = true; };
-  }, [html]);
+  }, [html, sourceUrl]);
 
   useEffect(() => {
     const elements = headings.map((heading) => document.getElementById(heading.id)).filter((heading): heading is HTMLElement => Boolean(heading));
