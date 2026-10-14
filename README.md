@@ -9,8 +9,52 @@ This would have:
 
 ## Repository Structure
 
+- `client/` contains the React, TypeScript, and Tailwind frontend built with Vite.
 - `notes/` contains topic-based notes and explanations.
 - `problems/` contains combined Python files with the problem statement as a docstring comment followed by the solution code.
+
+The journal is deployed to GitHub Pages through `.github/workflows/deploy-pages.yml`.
+The frontend uses Bun for dependency installation and scripts. Install [Bun](https://bun.sh), then run:
+
+```bash
+cd client
+bun install --frozen-lockfile
+bun run dev
+```
+
+Open the local URL printed by Vite, usually `http://localhost:5173`.
+
+### Frontend commands
+
+Run these commands from `client/`:
+
+```bash
+# Install dependencies exactly from bun.lock
+bun install --frozen-lockfile
+
+# Start the Vite development server
+bun run dev
+
+# Check TypeScript without emitting files
+bun run typecheck
+
+# Create the production bundle
+bun run build
+
+# Serve the production bundle locally
+bun run preview
+```
+
+The reader route uses hash routing, so local and GitHub Pages URLs have this shape:
+`/#/reader?file=./notes/data-structure.md`.
+
+### Checking common issues
+
+1. If dependencies are missing, run `bun install --frozen-lockfile` inside `client/`.
+2. If the page is blank, check the browser console and run `bun run typecheck`.
+3. If a note cannot be opened, verify that `notes/manifest.json` is valid JSON and that the referenced Markdown file exists.
+4. If images or notes fail after deployment, confirm that the workflow copies `notes/`, `assets/`, and `problems/` into `client/dist/`.
+5. If GitHub Pages shows a 404 on a reader URL, use the hash URL (`/#/reader?...`) rather than a server-style `/reader` path.
 
 ## How to Use This Repository
 

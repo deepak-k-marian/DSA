@@ -24,19 +24,25 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Build index.html
-        run: python3 web/build.py
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        working-directory: client
+        run: bun install --frozen-lockfile
+      - name: Build React app
+        working-directory: client
+        run: bun run build
       - name: Build site directory
         run: |
-          mkdir -p _site
-          cp -r web/* _site/
-          cp -r notes _site/
-          cp -r assets _site/
-          cp -r problems _site/ 2>/dev/null || true
+          cp -r notes client/dist/
+          cp -r assets client/dist/
+          cp -r problems client/dist/ 2>/dev/null || true
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: ./client/dist
 
   deploy:
     needs: build

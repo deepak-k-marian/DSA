@@ -32,6 +32,9 @@ node_modules/
 dist/
 build/
 coverage/
+client/node_modules/
+client/dist/
+client/.vite/
 
 # Local tooling output
 .cache/
