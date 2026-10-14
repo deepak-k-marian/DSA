@@ -68,9 +68,8 @@ h1 em { color: var(--coral); font-family: Georgia, serif; font-weight: 400; lett
 .note-card h3 { margin-bottom: 9px; font-size: 22px; letter-spacing: -0.04em; }
 .note-card p { max-width: 270px; margin-bottom: 28px; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .note-card-dark p { color: #b9c2bd; }.card-bottom { margin-top: auto; color: var(--muted); }.note-card-dark .card-bottom { color: var(--mint); }.arrow { font-size: 20px; }
-/* coral accent: bottom arrow on every card, ↗ top-right on light cards */
+/* Coral accent for the card navigation arrow. */
 .note-card .arrow { color: var(--coral); }
-.note-card-light .card-top span:last-child { color: var(--coral); }
 .practice-section { padding-bottom: 88px; }
 .problem-meta { gap: 8px; margin-bottom: 4px; color: var(--muted); font: 11px "DM Mono", monospace; }.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }.meta-divider { margin: 0 5px; color: var(--line); }
 .practice-layout { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; }

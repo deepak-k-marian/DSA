@@ -8,7 +8,7 @@ export default function NoteCard({ note, index }: { note: Note; index: number })
     : ([0, 3].includes(index % 4) ? 'note-card-dark' : 'note-card-light');
   return (
     <Link className={`note-card ${theme}`} to={`/reader?file=./notes/${note.file}`}>
-      <div className="card-top"><span>NOTE {String(index + 1).padStart(2, '0')}</span><span>↗</span></div>
+      <div className="card-top"><span>NOTE {String(index + 1).padStart(2, '0')}</span></div>
       {note.icon === 'bars' ? <ComplexityBars /> : <div className="card-icon">{note.icon}</div>}
       <h3>{note.title}</h3>
       <p>{note.description}</p>
