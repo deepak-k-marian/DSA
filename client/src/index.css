@@ -116,7 +116,7 @@ h1 em { color: var(--coral); font-family: Georgia, serif; font-weight: 400; lett
 /* Inside blockquotes the background is mint — swap coral for mint-deep so contrast ≥ 4.5:1 */
 .markdown-content blockquote .math { color: var(--mint-deep); }
 .markdown-content blockquote code { color: var(--mint-deep); background: rgba(45, 108, 88, 0.18); }
-.markdown-content img { display: block; max-width: 100%; height: auto; margin: 28px 0; box-shadow: var(--shadow); }
+.markdown-content img { display: block; max-width: 100%; height: auto; margin: 28px 0; box-shadow: none; }
 .markdown-content .math { color: var(--coral); font-family: Georgia, serif; font-weight: 400; }
 .table-wrap { overflow-x: auto; margin: 25px 0; }.markdown-content table { width: 100%; border-collapse: collapse; font-size: 13px; }.markdown-content th, .markdown-content td { padding: 11px 13px; border-bottom: 1px solid var(--line); text-align: left; }.markdown-content th { color: var(--mint-deep); font: 13px "DM Mono", monospace; }
 .loading-state, .error-state { padding: 25px; color: var(--muted); background: var(--cream); }.loading-state span { color: var(--coral); }.error-state a { color: var(--mint-deep); }
