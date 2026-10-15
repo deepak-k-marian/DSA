@@ -2,15 +2,7 @@
 
 Time complexity describes the amount of time an algorithm takes to complete as a function of the input size. It is commonly expressed using asymptotic notation, such as Big O notation.
 
-```mermaid
-graph LR
-    A[Input: Source Code] --> B[Process: Compile / Interpret]
-    B --> C[Output: Execution / Executable]
-
-    style A fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style B fill:#d4ebf2,stroke:#0071bc,stroke-width:3px
-    style C fill:#f9f9f9,stroke:#333,stroke-width:2px
-```
+{{diagram:source-code-flow}}
 
 ## Characteristics
 
@@ -63,4 +55,3 @@ From best to worst:
 > **Space complexity = Auxiliary space + Input space**
 
 ![Big O Chart](../assets/images/big-o-chart.jpeg)
-

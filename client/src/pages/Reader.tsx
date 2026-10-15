@@ -2,8 +2,13 @@ import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Topbar from '../components/Topbar';
+import sourceCodeFlow from '../assets/diagrams/source-code-flow.mmd?raw';
 import { renderMarkdown, type Heading } from '../lib/markdown';
 import { renderMermaidDiagrams } from '../lib/mermaid';
+
+const diagramSources: Record<string, string> = {
+  'source-code-flow': sourceCodeFlow,
+};
 
 export default function Reader() {
   const [params] = useSearchParams();
@@ -35,6 +40,17 @@ export default function Reader() {
     if (!contentRef.current || !html) return;
     const images = contentRef.current.querySelectorAll('img');
     images.forEach((image) => { const source = image.getAttribute('src'); if (source && sourceUrl) image.src = new URL(source, sourceUrl).href; });
+    const diagramNodes = contentRef.current.querySelectorAll<HTMLElement>('.mermaid-source');
+    diagramNodes.forEach((node) => {
+      const source = diagramSources[node.dataset.diagram ?? ''];
+      if (!source) {
+        node.textContent = `Diagram source "${node.dataset.diagram ?? 'unknown'}" was not found.`;
+        console.error(`Could not find Mermaid source "${node.dataset.diagram ?? 'unknown'}".`);
+        return;
+      }
+      node.className = 'mermaid';
+      node.textContent = source;
+    });
     renderMermaidDiagrams(contentRef.current).catch((loadError) => console.error('Could not render Mermaid diagram', loadError));
   }, [html, sourceUrl]);
 

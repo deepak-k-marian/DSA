@@ -51,6 +51,8 @@ export function renderMarkdown(markdown: string): RenderedMarkdown {
     if (/^\s*\|/.test(line)) { flushParagraph(); flushList(); flushQuote(); table.push(line); continue; }
     if (!line.trim()) { flushParagraph(); flushList(); flushQuote(); flushTable(); continue; }
     if (/^(-{3,}|\*{3,}|_{3,})$/.test(line.trim())) { flushParagraph(); flushList(); flushQuote(); flushTable(); continue; }
+    const diagram = line.match(/^\{\{diagram:([a-z0-9/_-]+)\}\}$/);
+    if (diagram) { flushParagraph(); flushList(); flushQuote(); flushTable(); output.push(`<div class="diagram-card"><div class="diagram-label">CONCEPT MAP</div><div class="mermaid-source" data-diagram="${diagram[1]}"></div></div>`); continue; }
     const heading = line.match(/^(#{1,3})\s+(.+)/);
     if (heading) { flushParagraph(); flushList(); flushQuote(); flushTable(); const id = `heading-${headings.length}`; headings.push({ id, text: heading[2] }); output.push(`<h${heading[1].length} id="${id}">${inlineMarkdown(heading[2])}</h${heading[1].length}>`); continue; }
     if (/^>\s?/.test(line)) { flushParagraph(); flushList(); flushTable(); quote.push(line.replace(/^>\s?/, '')); continue; }
