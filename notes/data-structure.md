@@ -27,6 +27,8 @@ Memory addresses in a system are commonly represented using the hexadecimal numb
 
 > 1 KB = 1024 bytes = $2^{10}$ bytes
 
+![Analog and Digital](../assets/images/analog-digital.svg)
+
 ## Data Structure System
 
 The structure (or format) used to store and access data in a system is called a data structure.

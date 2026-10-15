@@ -37,7 +37,6 @@ jobs:
       - name: Build site directory
         run: |
           cp -r notes client/dist/
-          cp -r assets client/dist/
           cp -r problems client/dist/ 2>/dev/null || true
       - name: Upload site
         uses: actions/upload-pages-artifact@v3

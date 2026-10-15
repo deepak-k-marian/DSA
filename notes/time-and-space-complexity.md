@@ -45,13 +45,13 @@ From best to worst:
 7. **$O(n!)$ — Factorial time:** The running time grows even more rapidly than exponential time; this is common in combinatorial problems.
 
 | Complexity | Common pattern | Example |
-|---|---|---|
-| **O(1)** | Direct operation | Access arr[i] |
-| **O(log n)** | Problem size repeatedly divided | Binary Search |
-| **O(n)** | One complete traversal | Linear Search |
-| **O(n log n)** | Divide + process/efficient sorting | Merge Sort |
-| **O(n²)** | Nested traversal | Bubble Sort |
-| **O(2ⁿ)** | Recursive branching | Subset generation |
+|----------------|------------------------------------|-------------------|
+|    **O(1)**    |          Direct operation          |   Access arr[i]   |
+|  **O(log n)**  |   Problem size repeatedly divided  |   Binary Search   |
+|    **O(n)**    |       One complete traversal       |   Linear Search   |
+| **O(n log n)** | Divide + process/efficient sorting |     Merge Sort    |
+|    **O(n²)**   |          Nested traversal          |    Bubble Sort    |
+|   **O(2ⁿ)**    |         Recursive branching        | Subset generation |
 
 ## Space Complexity
 

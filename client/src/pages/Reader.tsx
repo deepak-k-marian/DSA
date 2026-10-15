@@ -2,13 +2,9 @@ import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Topbar from '../components/Topbar';
-import sourceCodeFlow from '../assets/diagrams/source-code-flow.mmd?raw';
+import { diagramSources, imageAssets } from '../lib/assets';
 import { renderMarkdown, type Heading } from '../lib/markdown';
 import { renderMermaidDiagrams } from '../lib/mermaid';
-
-const diagramSources: Record<string, string> = {
-  'source-code-flow': sourceCodeFlow,
-};
 
 export default function Reader() {
   const [params] = useSearchParams();
@@ -39,7 +35,12 @@ export default function Reader() {
   useEffect(() => {
     if (!contentRef.current || !html) return;
     const images = contentRef.current.querySelectorAll('img');
-    images.forEach((image) => { const source = image.getAttribute('src'); if (source && sourceUrl) image.src = new URL(source, sourceUrl).href; });
+    images.forEach((image) => {
+      const source = image.getAttribute('src');
+      const filename = source?.split('/').pop();
+      if (filename && imageAssets[filename]) image.src = imageAssets[filename];
+      else if (source && sourceUrl) image.src = new URL(source, sourceUrl).href;
+    });
     const diagramNodes = contentRef.current.querySelectorAll<HTMLElement>('.mermaid-source');
     diagramNodes.forEach((node) => {
       const source = diagramSources[node.dataset.diagram ?? ''];

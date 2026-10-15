@@ -54,7 +54,7 @@ The reader route uses hash routing, so local and GitHub Pages URLs have this sha
 1. If dependencies are missing, run `bun install --frozen-lockfile` inside `client/`.
 2. If the page is blank, check the browser console and run `bun run typecheck`.
 3. If a note cannot be opened, verify that `notes/manifest.json` is valid JSON and that the referenced Markdown file exists.
-4. If images or notes fail after deployment, confirm that the workflow copies `notes/`, `assets/`, and `problems/` into `client/dist/`.
+4. If images or notes fail after deployment, confirm that the workflow copies `notes/` and `problems/` into `client/dist/`, and that frontend assets are imported from `client/src/assets/`.
 5. If GitHub Pages shows a 404 on a reader URL, use the hash URL (`/#/reader?...`) rather than a server-style `/reader` path.
 
 ## How to Use This Repository

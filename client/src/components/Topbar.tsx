@@ -1,12 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/carbon-cube.svg';
+import { logoAsset } from '../lib/assets';
 
 export default function Topbar({ reader = false }: { reader?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener('scroll', onScroll, { passive: true });
+    let favicon = document.querySelector<HTMLLinkElement>('link[data-dsa-favicon]');
+    if (!favicon) {
+      favicon = document.createElement('link');
+      favicon.rel = 'icon';
+      favicon.dataset.dsaFavicon = 'true';
+      document.head.appendChild(favicon);
+    }
+    favicon.href = logoAsset;
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -19,7 +27,7 @@ export default function Topbar({ reader = false }: { reader?: boolean }) {
   return (
     <header className={`topbar${scrolled ? ' is-scrolled' : ''}`}>
       <Link className="brand" to="/" aria-label="DSA Journal home">
-        <img src={logo} alt="DSA Logo" className="brand-img" />
+        <img src={logoAsset} alt="DSA Logo" className="brand-img" />
         {!reader && <span />}
       </Link>
       {reader ? <Link className="back-link" to="/">← Back to journal</Link> : (
