@@ -16,7 +16,7 @@ Time complexity describes the amount of time an algorithm takes to complete as a
 - **Big Omega ($\Omega$):** Describes a lower bound, commonly used for best-case analysis.
 - **Big Theta ($\Theta$):** Describes a tight bound.
 
-![Understanding Asymptotic Analysis](../assets/images/data-structure-asymptotic-analysis.png)
+![Understanding Asymptotic Analysis](../assets/images/data-structure-asymptotic-analysis.svg)
 
 ## Complexity Growth Hierarchy
 
@@ -61,4 +61,4 @@ From best to worst:
 
 > **Space complexity = Auxiliary space + Input space**
 
-![Big O Chart](../assets/images/big-o-chart.jpeg)
+![Big O Chart](../assets/images/big-o-chart.svg)
