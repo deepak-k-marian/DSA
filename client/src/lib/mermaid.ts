@@ -1,5 +1,5 @@
 const mermaidTheme = {
-  primaryColor: '#c8e9d8',
+  primaryColor: '#fbfaf6',
   primaryTextColor: '#1c2525',
   primaryBorderColor: '#2d6c58',
   lineColor: '#e9785b',
